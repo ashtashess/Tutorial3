@@ -16,10 +16,11 @@ public class GameController : MonoBehaviour
     public Text RestartText;
     public Text GameOverText;
 
+
     private int score;
 
-    private bool GameOver = true;
-    private bool Restart = true;
+    private bool GameOver;
+    private bool Restart;
 
     void Start()
     {

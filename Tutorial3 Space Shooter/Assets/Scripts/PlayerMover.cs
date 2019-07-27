@@ -32,6 +32,8 @@ public class PlayerMover : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
+            
+
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
             MusicSource.Play();
@@ -45,9 +47,6 @@ public class PlayerMover : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        if (Input.GetKey("escape"))
-            Application.Quit();
 
 
         float moveHorizontal = Input.GetAxis("Horizontal");

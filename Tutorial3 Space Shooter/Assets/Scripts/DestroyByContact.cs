@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyByContact : MonoBehaviour
@@ -32,6 +31,7 @@ public class DestroyByContact : MonoBehaviour
         if (other.tag == "Player")
         {
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+            
         }
         gameController.AddScore(scoreValue);
         Destroy(other.gameObject);
