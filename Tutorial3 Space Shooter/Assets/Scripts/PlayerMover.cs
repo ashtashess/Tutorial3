@@ -48,6 +48,9 @@ public class PlayerMover : MonoBehaviour
     void FixedUpdate()
     {
 
+        if(Input.GetKey("escape"))
+            Application.Quit();
+
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
