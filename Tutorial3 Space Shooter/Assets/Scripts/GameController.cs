@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     {
         if (restart)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.A))
             {
                 Application.LoadLevel(Application.loadedLevel);
             }
@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
 
             if (gameOver)
             {
-                restartText.text = "Press 'R' for Restart";
+                restartText.text = "Press 'A' for Restart";
                 restart = true;
                 break;
             }
@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour
 
     void UpdateScore()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Points: " + score;
         if (score >=100)
         {
             winText.text = "You win! GAME CREATED BY [ASHLEY PRIETO]";
