@@ -8,6 +8,8 @@ public class BGScroller : MonoBehaviour
     public float scrollSpeed;
     public float tileSizeZ;
 
+    public GameController gameController;
+
     private Vector3 startPosition;
 
     void Start()
@@ -17,6 +19,10 @@ public class BGScroller : MonoBehaviour
 
     void Update()
     {
+        if (gameController.score >= 100)
+        {
+            scrollSpeed = -40; 
+        }
         float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizeZ);
         transform.position = startPosition + Vector3.forward * newPosition;
     }

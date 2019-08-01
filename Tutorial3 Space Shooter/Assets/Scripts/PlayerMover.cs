@@ -14,6 +14,7 @@ public class PlayerMover : MonoBehaviour
     public float tilt;
     public Boundary boundary;
 
+
     public AudioClip MusicClip;
 
     public AudioClip MusicClip2;
@@ -32,7 +33,7 @@ public class PlayerMover : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
-            
+
 
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -48,7 +49,7 @@ public class PlayerMover : MonoBehaviour
     void FixedUpdate()
     {
 
-        if(Input.GetKey("escape"))
+        if (Input.GetKey("escape"))
             Application.Quit();
 
 
@@ -68,4 +69,6 @@ public class PlayerMover : MonoBehaviour
         rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tilt);
 
     }
+ 
+  
 }

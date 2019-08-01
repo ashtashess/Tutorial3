@@ -12,6 +12,11 @@ public class GameController : MonoBehaviour
     public float startWait;
     public float waveWait;
 
+    public AudioSource musicSource;
+    public AudioClip musicClipOne;
+    public AudioClip musicClipTwo;
+
+
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
@@ -19,7 +24,7 @@ public class GameController : MonoBehaviour
 
     private bool gameOver;
     private bool restart;
-    private int score;
+    public int score;
 
     void Start()
     {
@@ -40,7 +45,9 @@ public class GameController : MonoBehaviour
             {
                 Application.LoadLevel(Application.loadedLevel);
             }
+
         }
+
     }
 
     IEnumerator SpawnWaves()
@@ -55,8 +62,10 @@ public class GameController : MonoBehaviour
                 Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(hazard, spawnPosition, spawnRotation);
                 yield return new WaitForSeconds(spawnWait);
-            }
+
+                }
             yield return new WaitForSeconds(waveWait);
+
 
             if (gameOver)
             {
@@ -65,6 +74,7 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
+
     }
 
     public void AddScore(int newScoreValue)
@@ -79,14 +89,19 @@ public class GameController : MonoBehaviour
         if (score >=100)
         {
             winText.text = "You win! GAME CREATED BY [ASHLEY PRIETO]";
+            musicSource.clip = musicClipOne;
+            musicSource.Play();
             gameOver = true;
             restart = true;
         }
     }
 
+
     public void GameOver()
     {
         gameOverText.text = "GAME CREATED BY [ASHLEY PRIETO]";
+        musicSource.clip = musicClipTwo;
+        musicSource.Play();
         gameOver = true;
     }
 }
