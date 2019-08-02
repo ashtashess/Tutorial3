@@ -21,10 +21,15 @@ public class GameController : MonoBehaviour
     public Text restartText;
     public Text gameOverText;
     public Text winText;
+    public Text livesText;
 
+    private bool timerIsActive;
     private bool gameOver;
     private bool restart;
     public int score;
+
+    private int playerHealth;
+    public bool isDead;
 
     void Start()
     {
@@ -35,6 +40,8 @@ public class GameController : MonoBehaviour
         score = 0;
         UpdateScore();
         StartCoroutine(SpawnWaves());
+        playerHealth = 3;
+        isDead = false;
     }
 
     void Update()
@@ -86,14 +93,33 @@ public class GameController : MonoBehaviour
     void UpdateScore()
     {
         scoreText.text = "Points: " + score;
-        if (score >=100)
+        if (score >=150)
         {
+
             winText.text = "You win! GAME CREATED BY [ASHLEY PRIETO]";
             musicSource.clip = musicClipOne;
             musicSource.Play();
             gameOver = true;
             restart = true;
+            timerIsActive = false;
+
         }
+
+    }
+
+    public void SubLive()
+    {
+        playerHealth--;
+        UpdateLives();
+        if (playerHealth <= 0)
+        {
+            isDead = true;
+        }
+    }
+
+    void UpdateLives()
+    {
+        livesText.text = "Lives: " + playerHealth;
     }
 
 

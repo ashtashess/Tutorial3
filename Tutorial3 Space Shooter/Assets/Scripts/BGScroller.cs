@@ -19,7 +19,7 @@ public class BGScroller : MonoBehaviour
 
     void Update()
     {
-        if (gameController.score >= 100)
+        if (gameController.score >= 150)
         {
             scrollSpeed = -40; 
         }

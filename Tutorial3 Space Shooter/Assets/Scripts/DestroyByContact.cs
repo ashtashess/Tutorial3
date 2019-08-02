@@ -34,14 +34,25 @@ public class DestroyByContact : MonoBehaviour
             Instantiate(explosion, transform.position, transform.rotation);
         }
 
-        if (other.tag == "Player")
+
+        if (other.tag == "Bolt")
         {
-            Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-            gameController.GameOver();
+            Destroy(other.gameObject);
         }
 
-        gameController.AddScore(scoreValue);
-        Destroy(other.gameObject);
+
+        if (other.tag == "Player")
+        {
+            gameController.SubLive(); //if player ship collides asteroid or enemy ship reduces 1 health
+            if (gameController.isDead == true) //explodes ship once playerHealth is 0
+            {
+                Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+                gameController.GameOver();
+                Destroy(other.gameObject);
+            }
+        }
+
+        gameController.AddScore (scoreValue);
         Destroy(gameObject);
     }
 }

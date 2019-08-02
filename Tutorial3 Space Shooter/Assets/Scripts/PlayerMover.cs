@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Boundary
@@ -14,6 +15,9 @@ public class PlayerMover : MonoBehaviour
     public float tilt;
     public Boundary boundary;
 
+    public Text scoreText;
+
+    public int score;
 
     public AudioClip MusicClip;
 
@@ -44,6 +48,8 @@ public class PlayerMover : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        score = 0;
+
     }
 
     void FixedUpdate()
@@ -69,6 +75,25 @@ public class PlayerMover : MonoBehaviour
         rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tilt);
 
     }
- 
-  
+
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("Pickup"))
+        {
+
+            other.gameObject.SetActive(false);
+            score = score + 100;
+            SetScoreText();
+
+        }
+    }
+    void SetScoreText()
+    {
+        scoreText.text = "Points: " + score;
+    }
+
 }
+
+
+
