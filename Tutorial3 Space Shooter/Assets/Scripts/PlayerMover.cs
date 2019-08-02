@@ -83,7 +83,7 @@ public class PlayerMover : MonoBehaviour
         {
 
             other.gameObject.SetActive(false);
-            score = score + 100;
+            score = score + 50;
             SetScoreText();
 
         }

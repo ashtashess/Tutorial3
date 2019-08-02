@@ -7,6 +7,7 @@ public class BGScroller : MonoBehaviour
 
     public float scrollSpeed;
     public float tileSizeZ;
+    public float time_elapsed;
 
     public GameController gameController;
 
@@ -15,13 +16,15 @@ public class BGScroller : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        time_elapsed = 0f;
     }
 
-    void Update()
+    public void Update()
     {
-        if (gameController.score >= 150)
+        if (gameController.score >= 100)
         {
-            scrollSpeed = -40; 
+            time_elapsed = Time.time + time_elapsed;
+            scrollSpeed = (Mathf.Lerp(-0.30f, -20f, time_elapsed));
         }
         float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizeZ);
         transform.position = startPosition + Vector3.forward * newPosition;

@@ -31,6 +31,11 @@ public class GameController : MonoBehaviour
     private int playerHealth;
     public bool isDead;
 
+
+    
+
+    
+
     void Start()
     {
         gameOver = false;
@@ -42,6 +47,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(SpawnWaves());
         playerHealth = 3;
         isDead = false;
+        
     }
 
     void Update()
@@ -55,7 +61,9 @@ public class GameController : MonoBehaviour
 
         }
 
+       
     }
+
 
     IEnumerator SpawnWaves()
     {
@@ -93,7 +101,7 @@ public class GameController : MonoBehaviour
     void UpdateScore()
     {
         scoreText.text = "Points: " + score;
-        if (score >=150)
+        if (score >=100)
         {
 
             winText.text = "You win! GAME CREATED BY [ASHLEY PRIETO]";
